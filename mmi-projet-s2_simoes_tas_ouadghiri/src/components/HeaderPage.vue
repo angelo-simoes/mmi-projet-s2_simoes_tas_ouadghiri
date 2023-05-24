@@ -21,14 +21,15 @@
                     <li>
                         <RouterLink class="active block p-4 rounded-lg text-white" to="/rent">Rent</RouterLink>
                     </li>
-                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Buy</RouterLink></li>
-                    <li><RouterLink class="block p-4 rounded-lg text-white" to="/sell">Sell</RouterLink></li>
-                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Manage property</RouterLink></li>
-                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Resources</RouterLink></li>
+                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Rechercher</RouterLink></li>
+                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Évènements</RouterLink></li>
+                    <li><RouterLink class="block p-4 rounded-lg text-white" to="">Messagerie</RouterLink></li>
                 </ul>
                 <div class="flex items-center gap-4 px-4">
-                    <button class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6">Se connecter</button>
-                    <button class="flex-1 p-3 rounded-lg bg-orange-600 text-white font-bold lg:flex-none lg:px-6">S'inscrire</button>
+                    <ul class="flex flex-col gap-4 lg:flex-row lg:items-center ">
+                        <li><RouterLink class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6" to="/login">Se connecter</RouterLink></li>
+                        <li><RouterLink class="flex-1 p-3 rounded-lg bg-orange-600 text-white font-bold lg:flex-none lg:px-6" to="/register">S'inscrire</RouterLink></li>
+                    </ul>
                 </div>
             </nav>
     </header>
