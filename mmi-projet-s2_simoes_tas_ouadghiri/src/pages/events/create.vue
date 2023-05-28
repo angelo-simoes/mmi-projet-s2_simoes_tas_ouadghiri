@@ -3,30 +3,31 @@
       <h1 class="text-2xl font-bold my-4">Créer un événement</h1>
       <form @submit.prevent="submitForm">
         <div class="mb-4">
-          <label for="title" class="block font-bold mb-1">Titre</label>
+          <label for="title" class="block font-bold mb-1 text-orange-600">Titre</label>
           <input v-model="eventData.title" type="text" id="title" class="border border-gray-300 rounded-md p-2 w-full" required>
         </div>
         <div class="mb-4">
-          <label for="dateStart" class="block font-bold mb-1">Date de début</label>
+          <label for="dateStart" class="block font-bold mb-1 text-orange-600">Date de début</label>
           <input v-model="eventData.date_start" type="datetime-local" id="dateStart" class="border border-gray-300 rounded-md p-2 w-full" required>
         </div>
         <div class="mb-4">
-          <label for="dateEnd" class="block font-bold mb-1">Date de fin</label>
+          <label for="dateEnd" class="block font-bold mb-1 text-orange-600">Date de fin</label>
           <input v-model="eventData.date_end" type="datetime-local" id="dateEnd" class="border border-gray-300 rounded-md p-2 w-full" required>
         </div>
         <div class="mb-4">
-          <label for="place" class="block font-bold mb-1">Lieu</label>
+          <label for="place" class="block font-bold mb-1 text-orange-600">Lieu</label>
           <input v-model="eventData.place" type="text" id="place" class="border border-gray-300 rounded-md p-2 w-full" required>
         </div>
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Créer</button>
+        <button type="submit" class="float-right bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-md">Créer</button>
       </form>
     </div>
   </template>
-  
+
   <script setup lang="ts">
   import { ref } from 'vue';
   import { createEvent } from '@/backend';
   import type { EventsRecord } from '@/pocketbase-types';
+  import { parseISO } from 'date-fns';
   
   const eventData = ref<EventsRecord>({
     title: '',
@@ -36,11 +37,11 @@
   });
   
   async function submitForm() {
-    try {
+  try {
     const eventDataWithISODate: EventsRecord = {
       ...eventData.value,
-      date_start: new Date(eventData.value.date_start).toISOString(),
-      date_end: new Date(eventData.value.date_end).toISOString(),
+      date_start: parseISO(eventData.value.date_start).toISOString(),
+      date_end: parseISO(eventData.value.date_end).toISOString(),
     };
 
     await createEvent(eventDataWithISODate);
@@ -56,18 +57,7 @@
   } catch (error) {
     console.error('Erreur lors de la création de l\'événement', error);
   }
-   /* try {
-      await createEvent(eventData.value);
-      console.log('Événement créé avec succès');
-      // Réinitialiser le formulaire
-      eventData.value = {
-        title: '',
-        date_start: '',
-        date_end: '',
-        place: '',
-      };
-    } catch (error) {
-      console.error('Erreur lors de la création de l\'événement', error);
-    }*/
-  }
+}
+
+
   </script>
