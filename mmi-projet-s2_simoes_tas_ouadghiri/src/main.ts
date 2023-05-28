@@ -1,7 +1,7 @@
 import './assets/css/style.css'
 import { createApp } from 'vue'
-import App from './App.vue'
 import routes from '~pages'
+import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 
 const app = createApp(App)
@@ -14,3 +14,4 @@ app.use(
   )
 
 app.mount('#app')
+
