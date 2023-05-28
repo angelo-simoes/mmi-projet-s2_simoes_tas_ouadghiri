@@ -16,7 +16,11 @@
         </div>
         <div class="mb-4">
           <label for="place" class="block font-bold mb-1 text-orange-600">Lieu</label>
-          <input v-model="eventData.place" type="text" id="place" class="border border-gray-300 rounded-md p-2 w-full" required>
+          <!-- <input v-model="eventData.place" type="text" id="place" class="border border-gray-300 rounded-md p-2 w-full" required>-->
+          <input v-model="eventData.place" type="text" id="place" class="border border-gray-300 rounded-md p-2 w-full" required @input="fetchAddressSuggestions">
+            <ul v-if="addressSuggestions.length > 0" class="bg-white border border-gray-300 rounded-md mt-2 p-2">
+                <li v-for="suggestion in addressSuggestions" :key="suggestion.place_id" @click="selectAddressSuggestion(suggestion)">{{ suggestion.display_name }}</li>
+            </ul>
         </div>
         <button type="submit" class="float-right bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-md">Créer</button>
       </form>
@@ -28,6 +32,7 @@
   import { createEvent } from '@/backend';
   import type { EventsRecord } from '@/pocketbase-types';
   import { parseISO } from 'date-fns';
+  import axios from 'axios';
   
   const eventData = ref<EventsRecord>({
     title: '',
@@ -36,6 +41,29 @@
     place: '',
   });
   
+  const addressSuggestions = ref([]);
+
+async function fetchAddressSuggestions() {
+  try {
+    const response = await axios.get('https://nominatim.openstreetmap.org/search', {
+      params: {
+        q: eventData.value.place,
+        format: 'json',
+        limit: 5,
+      },
+    });
+
+    addressSuggestions.value = response.data;
+  } catch (error) {
+    console.error('Erreur lors de la récupération des suggestions d\'adresse', error);
+  }
+}
+
+function selectAddressSuggestion(suggestion) {
+  eventData.value.place = suggestion.display_name;
+  addressSuggestions.value = [];
+}
+
   async function submitForm() {
   try {
     const eventDataWithISODate: EventsRecord = {
