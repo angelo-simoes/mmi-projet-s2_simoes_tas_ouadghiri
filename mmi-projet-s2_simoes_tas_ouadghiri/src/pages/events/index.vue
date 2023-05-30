@@ -16,6 +16,6 @@
     <template>
     Test affichage
     <div class="grille my-24">
-        <CardEvent v-for="event in allEvents" v-bind="event" :key="event.id" :event="event" />
+        <CardEvent v-for="event in allEvents" v-bind="{...event}" :key="event.id"/>
     </div>
     </template>

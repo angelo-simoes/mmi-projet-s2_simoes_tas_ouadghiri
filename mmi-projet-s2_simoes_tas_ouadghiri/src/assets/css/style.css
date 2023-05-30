@@ -15,6 +15,12 @@
     h3 {
       @apply text-xl font-serif leading-tight;
     }
+    ::-moz-selection {
+      @apply bg-pink;
+    }
+    ::selection {
+      @apply bg-pink;
+    }
     
   }
 
