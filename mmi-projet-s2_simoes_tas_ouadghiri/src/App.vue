@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//import Auth from './components/Auth.vue'
 import {RouterView } from 'vue-router'
 import Header from './components/HeaderPage.vue'
 import Footer from './components/FooterPage.vue'
@@ -7,7 +8,9 @@ import Footer from './components/FooterPage.vue'
 <template>
   <Header/>
   <main>
-    <RouterView />
+    <Suspense>
+         <RouterView />
+    </Suspense>
   </main>
   <Footer/>
 </template>

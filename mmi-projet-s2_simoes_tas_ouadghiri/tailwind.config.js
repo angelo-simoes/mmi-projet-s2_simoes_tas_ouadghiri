@@ -8,7 +8,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Mulish', 'sans-serif'],
+      sans: ['Poppins', 'sans-serif'],
       serif: ['Space Mono', 'monospace']
     },
     extend: {
