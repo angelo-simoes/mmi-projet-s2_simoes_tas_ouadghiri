@@ -1,12 +1,13 @@
-import { pb } from '@/backend'
 import type { AuthSystemFields, UsersRecord, UsersResponse } from '@/pocketbase-types'
 import { ref } from 'vue'
+import { pb } from './backend'
+
 
 type MaybeUser = UsersResponse | null
 
 /** Permet de savoir si l'on est connecté ou pas
- * @prop {RecordIdString} id de l'utilisateur (utile pour relations)
- * @prop {string} username nom d'utilisateur 
+* @prop {RecordIdString} id de l'utilisateur (utile pour relations)
+* @prop {string} username nom d'utilisateur 
  */
 export const estConnecté = ref(null as MaybeUser)
 

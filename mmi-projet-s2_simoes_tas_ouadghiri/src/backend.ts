@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase' ;
 export const pb = new PocketBase('http://127.0.0.1:8090');
-import { type EventsResponse, type EventsRecord } from './pocketbase-types';
+import { type EventsResponse, type EventsRecord, type UsersRecord } from './pocketbase-types';
 
 
 export async function getAllEvents() {
@@ -21,3 +21,5 @@ export async function createEvent(eventData: EventsRecord) {
     throw error;
   }
 }
+
+

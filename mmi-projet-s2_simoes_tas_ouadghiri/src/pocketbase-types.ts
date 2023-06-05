@@ -43,6 +43,9 @@ export type EventsRecord = {
 
 export type UsersRecord = {
 	avatar?: string
+	email?:string
+	username?: string
+	password?: string
 }
 
 // Response types include system fields and match responses from the PocketBase API

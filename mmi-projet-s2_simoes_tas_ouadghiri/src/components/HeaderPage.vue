@@ -7,7 +7,6 @@
 
 
 
-
 </script>
 
 <template>
@@ -30,10 +29,11 @@
                 </ul>
                 <div class="flex items-center gap-4 px-4">
                         <button v-if="estConnecté" @click="logout" class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6">{{ estConnecté.username }}</button>
-                        <button  v-else @click="login" class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6">Connexion</button>
+                        <button v-else @click="login" class="flex-1 p-3 rounded-lg bg-orange-600 text-white font-bold lg:flex-none lg:px-6">Se connecter</button>
                 </div>
             </nav>
     </header>
 
 
 </template>
+

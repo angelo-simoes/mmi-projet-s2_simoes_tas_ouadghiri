@@ -16,6 +16,28 @@
 
     <template>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
     <div class="grille my-24">
         <div class="col-span-4 content-center mt-12 mb-16">
           <RouterLink class="flex justify-center" to="/events/create">
