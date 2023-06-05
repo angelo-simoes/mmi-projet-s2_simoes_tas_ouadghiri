@@ -34,22 +34,18 @@ export type AuthSystemFields<T = never> = {
 export type EventsRecord = {
 	title?: string
 	date_start?: IsoDateString
-	date_end?: IsoDateString
 	place?: string
 	sport?: string
-	img?: string
-	imgAlt?: string
+	latitude?: number
+	longitude?: number
 }
 
 export type UsersRecord = {
 	avatar?: string
-	email?:string
-	username?: string
-	password?: string
 }
 
 // Response types include system fields and match responses from the PocketBase API
-export type EventsResponse = Required<EventsRecord> & BaseSystemFields<never>;
+export type EventsResponse = Required<EventsRecord> & BaseSystemFields
 export type UsersResponse = Required<UsersRecord> & AuthSystemFields
 
 // Types containing all Records and Responses, useful for creating typing helper functions

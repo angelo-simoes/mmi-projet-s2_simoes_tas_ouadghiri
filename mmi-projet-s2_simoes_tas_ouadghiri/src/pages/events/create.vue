@@ -51,9 +51,10 @@
   const eventData = ref<EventsRecord>({
     title: '',
     date_start: '',
-    date_end: '',
     place: '',
     sport: '',
+    latitude: 0.0,
+    longitude: 0.0,
   });
   
 const addressSuggestions = ref([]);
@@ -76,7 +77,26 @@ async function fetchAddressSuggestions() {
 
 function selectAddressSuggestion(suggestion) {
   eventData.value.place = suggestion.display_name;
+  fetchCoordinates(suggestion);
   addressSuggestions.value = [];
+}
+
+async function fetchCoordinates(suggestion) {
+  try {
+    const response = await axios.get('https://nominatim.openstreetmap.org/search', {
+      params: {
+        q: suggestion.display_name,
+        format: 'json',
+        limit: 1,
+      },
+    });
+
+    const coordinates = response.data[0];
+    eventData.value.latitude = parseFloat(coordinates.lat);
+    eventData.value.longitude = parseFloat(coordinates.lon);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des coordonnées', error);
+  }
 }
 
   async function submitForm() {
@@ -84,7 +104,7 @@ function selectAddressSuggestion(suggestion) {
     const eventDataWithISODate: EventsRecord = {
       ...eventData.value,
       date_start: parseISO(eventData.value.date_start).toISOString(),
-      date_end: parseISO(eventData.value.date_end).toISOString(),
+
     };
 
     await createEvent(eventDataWithISODate);
@@ -94,9 +114,10 @@ function selectAddressSuggestion(suggestion) {
     eventData.value = {
       title: '',
       date_start: '',
-      date_end: '',
       place: '',
       sport: '',
+      latitude: 0.0,
+      longitude: 0.0,
     };
   } catch (error) {
     console.error('Erreur lors de la création de l\'événement', error);

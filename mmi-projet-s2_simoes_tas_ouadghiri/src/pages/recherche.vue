@@ -6,24 +6,34 @@
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
+      <l-marker v-for="event in events" :key="event.id" :lat-lng="[event.latitude, event.longitude]"></l-marker>
     </l-map>
   </div>
 </template>
 
 <script>
 import "leaflet/dist/leaflet.css";
-import { LMap, LTileLayer } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import { getAllEvents } from '@/backend';
 
 export default {
   components: {
     LMap,
     LTileLayer,
+    LMarker,
   },
   data() {
     return {
       zoom: 14,
-    
+      events: [],
     };
+  },
+  async mounted() {
+    try {
+      this.events = await getAllEvents();
+    } catch (error) {
+      console.error('Erreur lors de la récupération des événements', error);
+    }
   },
 };
 </script>
