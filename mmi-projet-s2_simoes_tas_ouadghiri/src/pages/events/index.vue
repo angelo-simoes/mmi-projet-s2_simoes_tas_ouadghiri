@@ -24,3 +24,5 @@
         <CardEvent v-for="event in allEvents" v-bind="{...event}" :key="event.id"/>
     </div>
     </template>
+                    
+
