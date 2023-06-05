@@ -7,9 +7,15 @@ export async function getAllEvents() {
     /*const events = await pb.collection('events').getFullList<EventsResponse>();
     return events;*/
     return await pb.collection('events').getFullList<EventsResponse>({
-      sort: 'created'
+      sort: 'date_start'
     });
-}   
+} 
+
+export async function getAllEventsBySport(sport: string) {
+  return await pb.collection('events').getFullList<EventsResponse>({
+    filter: `sport > '${sport}'`,
+  });
+}
 
 export async function createEvent(eventData: EventsRecord) {
   try {

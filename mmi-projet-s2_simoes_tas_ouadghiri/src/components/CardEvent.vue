@@ -64,11 +64,10 @@ const url = `/events/${props.id}`
     <img class="rounded flex-[1_0_100%] transition-all duration-300 ease-in-out" src="../../public/img/vtt.jpg" alt="vtt">
   </div>
 
-  
-
     <h3 class="z-[1] col-start-2 row-start-1 my-6 mr-4 self-end font-sans text-3xl text-white">
       <a :href="`${url}`">{{ props.title }}</a>
     </h3>
+
     <div class="z-[2] col-span-2 col-start-1 row-span-2 row-start-2 space-y-4 bg-white p-6">
       <p class="uppercase">{{ formatDate(props.date_start) }}</p>
       <p>{{ props.place }}</p>

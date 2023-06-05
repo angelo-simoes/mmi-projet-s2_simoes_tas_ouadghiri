@@ -3,15 +3,14 @@
       import type { EventsResponse } from '@/pocketbase-types';
       import { ref, onMounted } from "vue";
       import CardEvent from '@/components/CardEvent.vue'
-      import { getAllEvents } from '@/backend';
+      import { getAllEvents, getAllEventsBySport } from '@/backend';
       import  IconAdd  from '@/components/icons/IconAdd.vue';
+
       const allEvents = ref<EventsResponse[]>([]);
       onMounted(async () => {
-    // Appel à getAllEvents dans le hook onMounted
       allEvents.value = await getAllEvents();
       console.log(allEvents.value);
       });
-      //const allEvents = await getAllEvents();
     </script>
 
     <template>
