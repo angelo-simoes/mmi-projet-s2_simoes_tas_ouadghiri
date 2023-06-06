@@ -44,9 +44,29 @@ export async function oneEvent(id: string) {
   return await pb.collection('events').getOne<EventsResponse>(id)
 }
 
-export async function updateUser(id: string, data: { username: string, bio: string }) {
+// export async function updateUser(id: string, data: { username: string, bio: string }) {
+//   try {
+//     const response = await pb.collection('users').update(id, data);
+//     console.log('Profil modifié avec succès', response);
+//     return {
+//       success: true
+//     };
+//   } catch (error) {
+//     console.error('Erreur lors de la modification du profil', error);
+//     throw error;
+//   }
+// }
+
+export async function updateUser(id: string, data: { username: string, bio: string, avatar?: File }) {
   try {
-    const response = await pb.collection('users').update(id, data);
+    const formData = new FormData();
+    if (data.avatar) {
+      formData.append('avatar', data.avatar);
+    }
+    formData.append('username', data.username);
+    formData.append('bio', data.bio);
+
+    const response = await pb.collection('users').update(id, formData);
     console.log('Profil modifié avec succès', response);
     return {
       success: true
@@ -56,3 +76,4 @@ export async function updateUser(id: string, data: { username: string, bio: stri
     throw error;
   }
 }
+
