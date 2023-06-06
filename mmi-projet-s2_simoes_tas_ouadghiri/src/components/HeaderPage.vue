@@ -7,6 +7,8 @@
     function closeMenu() {
 	  activeMenu.value = false
 	}
+
+  const url = estConnecté.value ? `/profil/${estConnecté.value.id}` : '';
 </script>
 
 <template>
@@ -30,12 +32,15 @@
         >
         <ul class="mt-[25vh] ml-16 lg:m-0 lg:flex"> 
                 <li class="menu-item uppercase text-white"><RouterLink to="/events" @click="closeMenu" class="menu-link">mes évènements</RouterLink></li>
-                <li class="menu-item uppercase text-white"><RouterLink to="/messagerie" @click="closeMenu" class="menu-link">messagerie</RouterLink></li>
-		</ul>
+                <li class="menu-item uppercase text-white"><RouterLink to="/#" @click="closeMenu" class="menu-link">messagerie</RouterLink></li>
+		    </ul>
         <div class="flex items-center gap-4 px-4">
-                      <button v-if="estConnecté" @click="logout" class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6">{{ estConnecté.username }}</button>
-                      <button v-else @click="login" class="flex-1 p-3 rounded-lg border-2 text-white border-white font-bold lg:flex-none lg:px-6">Se connecter</button>
-              </div>
+          <div v-if="estConnecté">
+            <button @click="logout" class="flex-1 p-3  text-white font-bold lg:flex-none lg:px-6">Déconnexion</button>
+            <RouterLink :to="`${url}`"><button @click="closeMenu" class="flex-1 p-3 rounded-lg border-2 border-white font-bold text-white lg:flex-none lg:px-6">{{ estConnecté.username }}</button></RouterLink>
+          </div>         
+            <button v-else @click="login" class="flex-1 p-3 rounded-lg border-2 text-white border-white font-bold lg:flex-none lg:px-6">Se connecter</button>
+        </div>
 		</nav>
   </header>
-</template>
+</template> 

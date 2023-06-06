@@ -67,7 +67,7 @@ const url = `/events/${props.id}`
   </div>
 
     <h3 class="z-[1] col-start-2 row-start-1 my-6 mr-4 self-end font-sans text-3xl text-white">
-      <a :href="`${url}`">{{ props.title }}</a>
+      <RouterLink :to="`${url}`">{{ props.title }}</RouterLink>
     </h3>
 
     <div class="z-[2] col-span-2 col-start-1 row-span-2 row-start-2 space-y-4 bg-white p-6">
@@ -79,7 +79,7 @@ const url = `/events/${props.id}`
       <p class="uppercase">{{ formatDate(props.date_start) }}</p>
       <p>{{ props.place }}</p>
       <div class="flex justify-between">
-        <a class="inline-block border-b-2 border-black uppercase" :href="`${url}`">Voir plus</a>
+        <RouterView class="inline-block border-b-2 border-black uppercase" :to="`${url}`">Voir plus</RouterView>
         <button @click="deleteEvent(props.id)"><IconDelete ></IconDelete></button>
       </div>
 

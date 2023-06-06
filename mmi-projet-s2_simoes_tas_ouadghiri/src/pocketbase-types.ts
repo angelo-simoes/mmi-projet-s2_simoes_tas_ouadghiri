@@ -44,6 +44,7 @@ export type EventsRecord = {
 
 export type UsersRecord = {
 	avatar?: string
+	username?: string
 	bio?: string
 }
 

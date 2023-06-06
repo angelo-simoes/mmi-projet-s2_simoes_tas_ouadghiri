@@ -40,3 +40,18 @@ export async function deleteEvent(id: string) {
   }
 }
 
+export async function oneEvent(id: string) {
+  return await pb.collection('events').getOne<EventsResponse>(id)
+}
+
+
+export async function updateUser(userData: string) {
+  try {
+    const response = await pb.collection('events').update(userData);
+    console.log('Profil modifiée avec succès', response);
+    return response;
+  } catch (error) {
+    console.error('Erreur lors de la modification du profil', error);
+    throw error;
+  }
+}
