@@ -105,7 +105,10 @@ const selectedSport = ref('all'); // Valeur par défaut du picker
     </div>
       <div v-if="isEventModalOpen" class="fixed inset-0 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-6 w-1/2">
-          <h4 class="text-2xl font-bold mb-4">{{ selectedEvent.title }}</h4>
+          <div class="flex justify-between">
+            <h4 class="text-2xl font-bold mb-4">{{ selectedEvent.title }}</h4>
+            <h4 class="text-2xl font-bold mb-4">{{ selectedEvent.nb_participant }} personnes</h4>
+          </div>
           <p class="text-gray-600 uppercase font-semibold">{{ selectedEvent.sport }}</p>
           <p class="text-gray-600">{{ selectedEvent.place }}</p>
           <!-- Ajoutez d'autres informations de l'événement ici -->

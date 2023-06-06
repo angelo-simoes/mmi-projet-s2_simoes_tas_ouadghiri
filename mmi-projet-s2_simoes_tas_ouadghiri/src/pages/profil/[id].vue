@@ -25,7 +25,7 @@
             </ul>
         </div>
         <div class="flex justify-center">
-          <RouterLink :to="`${url}`" class="flex-1 p-3 rounded-lg bg-orange-600 font-bold text-white lg:flex-none lg:px-6">Modifier le profil</RouterLink>
+          <RouterLink :to="`${url}`" class="p-3 rounded-lg bg-orange-600 font-bold text-white lg:flex-none lg:px-6">Modifier le profil</RouterLink>
         </div>    
   </div>
 

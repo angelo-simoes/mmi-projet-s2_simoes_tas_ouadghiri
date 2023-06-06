@@ -51,6 +51,9 @@ import { createEvent } from '@/backend';
 import type { EventsRecord } from '@/pocketbase-types';
 import { parseISO } from 'date-fns';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const eventData = ref<EventsRecord>({
   title: '',
@@ -125,6 +128,9 @@ try {
     longitude: 0.0,
     nb_participant: 0,
   };
+
+  router.push('/events');
+
 } catch (error) {
   console.error('Erreur lors de la création de l\'événement', error);
 }

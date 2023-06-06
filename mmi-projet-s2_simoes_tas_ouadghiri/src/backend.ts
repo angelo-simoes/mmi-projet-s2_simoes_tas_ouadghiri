@@ -44,19 +44,6 @@ export async function oneEvent(id: string) {
   return await pb.collection('events').getOne<EventsResponse>(id)
 }
 
-// export async function updateUser(id: string, data: { username: string, bio: string }) {
-//   try {
-//     const response = await pb.collection('users').update(id, data);
-//     console.log('Profil modifié avec succès', response);
-//     return {
-//       success: true
-//     };
-//   } catch (error) {
-//     console.error('Erreur lors de la modification du profil', error);
-//     throw error;
-//   }
-// }
-
 export async function updateUser(id: string, data: { username: string, bio: string, avatar?: File }) {
   try {
     const formData = new FormData();
