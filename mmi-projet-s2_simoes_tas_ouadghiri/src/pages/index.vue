@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { LMap, LTileLayer, LMarker, LPopup,} from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
 import { ref, onMounted, watch } from "vue";
-import { LMap, LTileLayer, LMarker, LPopup,} from "@vue-leaflet/vue-leaflet";
 import { getAllEvents, getAllEventsBySport } from "@/backend";
 import { formatDate } from "@/helper";
 import  IconAdd  from '@/components/icons/IconAdd.vue';
