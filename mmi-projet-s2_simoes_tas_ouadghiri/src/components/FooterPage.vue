@@ -30,7 +30,7 @@
           4 place Tharradin<br />25200 Montbéliard<br /> <a href="mailto:coohop.sot@gmail.com">coohop.sot@gmail.com</a>
         </address>
       </div>
-      <p class="col-span-12 text-xs">CooHop! s’engage à ne prendre aucune responsabilité en cas de problème sur un terrain. Les terrains sont publics, et n'appartiennent en aucun cas au joueur ou à l'équipe WerPlay. En cas de terrain occupé lors de votre arrivé, nous ne sommes, en aucun cas, pas responsables. Nous écrire pour en savoir plus.</p>
+      <p class="col-span-12 text-xs">CooHop! s’engage à ne prendre aucune responsabilité en cas de problème sur un terrain. Les terrains sont publics, et n'appartiennent en aucun cas au joueur ou à l'équipe CooHop!. En cas de terrain occupé lors de votre arrivé, nous ne sommes, en aucun cas, pas responsables. Nous écrire pour en savoir plus.</p>
 
     </footer>
   </template>
