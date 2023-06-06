@@ -28,4 +28,15 @@ export async function createEvent(eventData: EventsRecord) {
   }
 }
 
+export async function deleteEvent(id: string) {
+  try {
+    const response = await pb.collection('events').delete(id);
+    window.location.reload();
+    console.log('Événement supprimer avec succès', response);
+    return response;
+  } catch (error) {
+    console.error('Erreur lors de la suppression de l\'événement', error);
+    throw error;
+  }
+}
 

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { formatDate } from '@/helper'
 import type { EventsResponse } from '@/pocketbase-types';
+import { deleteEvent } from '@/backend';
 const props: EventsResponse = defineProps<EventsResponse>()
+import  IconDelete  from '@/components/icons/IconDelete.vue';
 
 
 const url = `/events/${props.id}`
@@ -69,10 +71,18 @@ const url = `/events/${props.id}`
     </h3>
 
     <div class="z-[2] col-span-2 col-start-1 row-span-2 row-start-2 space-y-4 bg-white p-6">
+      <div class="flex justify-between">
+        <p class="uppercase font-semibold">{{ props.sport }}</p>
+        <p class="uppercase font-semibold">{{ props.nb_participant }} personnes</p>
+      </div>
+      
       <p class="uppercase">{{ formatDate(props.date_start) }}</p>
       <p>{{ props.place }}</p>
-      <p>{{ props.sport }}</p>
-      <a class="inline-block border-b-2 border-black uppercase" :href="`${url}`">Voir plus</a>
+      <div class="flex justify-between">
+        <a class="inline-block border-b-2 border-black uppercase" :href="`${url}`">Voir plus</a>
+        <button @click="deleteEvent(props.id)"><IconDelete ></IconDelete></button>
+      </div>
+
     </div>
   </article>
 </template>

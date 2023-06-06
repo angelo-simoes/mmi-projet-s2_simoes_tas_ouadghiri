@@ -8,6 +8,7 @@ import  IconAdd  from '@/components/icons/IconAdd.vue';
 import CardEvent from '@/components/CardEvent.vue'
 import { RouterLink } from 'vue-router'
 import type { EventsResponse } from '@/pocketbase-types';
+import type IconDeleteVue from "@/components/icons/IconDelete.vue";
 
 const zoom = ref(14);
 const isEventModalOpen = ref(false);
@@ -83,7 +84,7 @@ const selectedSport = ref('all'); // Valeur par défaut du picker
             allEvents.value = await getAllEvents();
             break;
         }
-      };
+  };
 
 
 </script>
