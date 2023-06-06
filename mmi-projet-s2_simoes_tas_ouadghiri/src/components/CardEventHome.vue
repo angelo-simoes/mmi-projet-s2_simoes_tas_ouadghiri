@@ -78,7 +78,7 @@ const url = `/events/${props.id}`
       <p class="uppercase">{{ formatDate(props.date_start) }}</p>
       <p>{{ props.place }}</p>
       <div class="flex justify-between">
-        <RouterView class="inline-block border-b-2 border-black uppercase" :to="`${url}`">Voir plus</RouterView>
+        <RouterLink :to="`${url}`" class="inline-block border-b-2 border-black uppercase font-medium" >VOIR</RouterLink>
         <button @click="deleteEvent(props.id)"><IconDelete ></IconDelete></button>
       </div>
 
