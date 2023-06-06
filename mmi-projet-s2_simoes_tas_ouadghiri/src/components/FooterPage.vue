@@ -1,6 +1,8 @@
 <script setup lang="ts">
 	import LogoIcon from '@/components/icons/CoohopLogo.vue'
+  import { logout, estConnecté, login } from '@/auth'
   import { RouterLink } from 'vue-router';
+  const url = estConnecté.value ? `/profil/${estConnecté.value.id}` : '';
 </script>
 
 <template>
@@ -11,19 +13,24 @@
           </RouterLink>
         </div>
       <nav class="space-y-4 col-span-3 col-start-7">
-        <ul class="lg:space-y-4">
-            <li><RouterLink to="/events">Evènements</RouterLink></li>
-            <li><RouterLink to="/profil">Profil</RouterLink></li>
+        <h3 class="font-bold uppercase">Menu</h3>
+        <ul class="lg:space-y-4 uppercase font-medium">
+            <li><RouterLink to="/events">mes évènements</RouterLink></li>
+            <li><RouterLink :to="`${url}`">profil</RouterLink></li>
+        </ul>
+        <ul class="lg:space-y-4 font-light text-sm">
+            <li><RouterLink to="/mentions">Mentions légales</RouterLink></li>
+            <li><RouterLink to="rgpd">RGPD</RouterLink></li>
         </ul>
       </nav>
   
       <div class="col-span-3 col-start-10 space-y-3">
-        <h4 class="font-bold uppercase">ADRESSE</h4>
-        <p>Fondation Cartier</p>
+        <h3 class="font-bold uppercase">contact</h3>
         <address>
-          261 Bd Raspail<br />75014 Paris<br />
+          4 place Tharradin<br />25200 Montbéliard<br /> <a href="mailto:coohop.sot@gmail.com">coohop.sot@gmail.com</a>
         </address>
       </div>
+      <p class="col-span-12 text-xs">CooHop! s’engage à ne prendre aucune responsabilité en cas de problème sur un terrain. Les terrains sont publics, et n'appartiennent en aucun cas au joueur ou à l'équipe WerPlay. En cas de terrain occupé lors de votre arrivé, nous ne sommes, en aucun cas, pas responsables. Nous écrire pour en savoir plus.</p>
 
     </footer>
   </template>
