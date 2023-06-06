@@ -1,8 +1,9 @@
     <script setup lang="ts">
+      import { estConnecté } from '@/auth'
       import { RouterLink } from 'vue-router'
       import type { EventsResponse } from '@/pocketbase-types';
       import { ref, onMounted } from "vue";
-      import CardEvent from '@/components/CardEvent.vue'
+      import CardEvent from '@/components/CardEventLogin.vue'
       import { getAllEvents, getAllEventsBySport } from '@/backend';
       import  IconAdd  from '@/components/icons/IconAdd.vue';
 
@@ -14,7 +15,8 @@
     </script>
 
     <template>
-    <div class="grille my-24">
+    
+    <div v-if="estConnecté" class="grille my-24">
         <div class="col-span-4 content-center mt-12 mb-16">
           <RouterLink class="flex justify-center" to="/events/create">
             <IconAdd/>

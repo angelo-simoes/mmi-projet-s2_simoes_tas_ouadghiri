@@ -5,7 +5,7 @@ import { ref, onMounted, watch } from "vue";
 import { getAllEvents, getAllEventsBySport } from "@/backend";
 import { formatDate } from "@/helper";
 import  IconAdd  from '@/components/icons/IconAdd.vue';
-import CardEvent from '@/components/CardEvent.vue'
+import CardEvent from '@/components/CardEventHome.vue'
 import { RouterLink } from 'vue-router'
 import type { EventsResponse } from '@/pocketbase-types';
 
@@ -137,12 +137,6 @@ const selectedSport = ref('all'); // Valeur par défaut du picker
   </div>
 
   <div class="grille my-24">
-        <div class="col-span-4 content-center mt-12 mb-16">
-          <RouterLink class="flex justify-center" to="/events/create">
-            <IconAdd/>
-          </RouterLink>
-          <h3 class="mt-8 flex justify-center text-center font-sans">Créer un évènement</h3>
-        </div>
         <CardEvent v-for="event in allEvents" v-bind="{...event}" :key="event.id"/>
     </div>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { estConnecté } from '@/auth'
 import { formatDate } from '@/helper'
 import type { EventsResponse } from '@/pocketbase-types';
 import { deleteEvent } from '@/backend';
@@ -10,10 +11,9 @@ const url = `/events/${props.id}`
 </script>
 
 <template>
-  <article
+    <article v-if="props.administrateur === estConnecté?.id"
     class="group col-span-4 grid grid-cols-[24px_1fr] grid-rows-[200px_48px_1fr] lg:grid-cols-[2fr_11fr] mb-16"
   >
-
   <div v-if="props.sport === 'football'" class="col-span-2 row-start-1 col-start-1 relative flex overflow-hidden before:absolute before:inset-0 before:z-[1] before:transition-all before:duration-300 before:ease-in-out">
     <img class="rounded flex-[1_0_100%] transition-all duration-300 ease-in-out" src="../../public/img/football.webp" alt="football">
   </div>
@@ -85,6 +85,7 @@ const url = `/events/${props.id}`
 
     </div>
   </article>
+  
 </template>
 
 

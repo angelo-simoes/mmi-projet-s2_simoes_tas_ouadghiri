@@ -38,7 +38,7 @@ export type EventsRecord = {
 	sport?: string
 	latitude?: number
 	longitude?: number
-	administrateur?: RecordIdString
+	administrateur?: string
 	nb_participant?: number
 }
 

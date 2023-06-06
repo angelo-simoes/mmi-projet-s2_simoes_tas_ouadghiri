@@ -52,6 +52,7 @@ import type { EventsRecord } from '@/pocketbase-types';
 import { parseISO } from 'date-fns';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { estConnecté } from '@/auth';
 
 const router = useRouter();
 
@@ -63,6 +64,7 @@ const eventData = ref<EventsRecord>({
   latitude: 0.0,
   longitude: 0.0,
   nb_participant: 0,
+  administrateur: '',
 });
 
 const addressSuggestions = ref([]);
@@ -109,10 +111,11 @@ async function fetchCoordinates(suggestion) {
 
 async function submitForm() {
 try {
+  const administrateur = estConnecté.value?.id ?? ''; // Obtenez le nom d'utilisateur de l'utilisateur connecté
   const eventDataWithISODate: EventsRecord = {
     ...eventData.value,
     date_start: parseISO(eventData.value.date_start).toISOString(),
-
+    administrateur: administrateur, // Attribuez la valeur du nom d'utilisateur à la propriété "administrateur"
   };
 
   await createEvent(eventDataWithISODate);
@@ -127,6 +130,7 @@ try {
     latitude: 0.0,
     longitude: 0.0,
     nb_participant: 0,
+    administrateur: '',
   };
 
   router.push('/events');
