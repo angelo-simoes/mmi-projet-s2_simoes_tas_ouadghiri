@@ -3,7 +3,7 @@
     import { RouterLink } from 'vue-router';
     import LogoIcon from '@/components/icons/CoohopLogoHeader.vue'
     import { logout, estConnecté, login } from '@/auth'
-    import { ref,computed, watch } from 'vue';
+    import { ref } from 'vue';
     function closeMenu() {
 	  activeMenu.value = false
 	}
@@ -16,15 +16,15 @@
       </RouterLink>
 
 
-        <button class="relative z-20 flex h-5 w-8 flex-col justify-between lg:hidden"  @click="activeMenu = !activeMenu">
-            <span class="block ease h-[2px] w-full transform rounded-full bg-black transition duration-300" :class="{ 'translate-y-[9px] rotate-45 bg-black': activeMenu }"></span>
-            <span class="block ease h-[2px] w-full transform rounded-full bg-black transition duration-300" :class="{ 'bg-black opacity-0': activeMenu }"></span>
-            <span class="block ease h-[2px] w-full transform rounded-full bg-black transition duration-300"  :class="{ '-translate-y-[9px] -rotate-45 bg-black': activeMenu }"></span>
+        <button class="relative z-50 flex h-5 w-8 flex-col justify-between lg:hidden"  @click="activeMenu = !activeMenu">
+            <span class="block ease h-[2px] w-full transform rounded-full bg-white transition duration-300" :class="{ 'translate-y-[9px] rotate-45 bg-white': activeMenu }"></span>
+            <span class="block ease h-[2px] w-full transform rounded-full bg-white transition duration-300" :class="{ 'bg-black opacity-0': activeMenu }"></span>
+            <span class="block ease h-[2px] w-full transform rounded-full bg-white transition duration-300" :class="{ '-translate-y-[9px] -rotate-45 bg-white': activeMenu }"></span>
       </button> 
 
 
         <nav
-            class="z-10 invisible opacity-0 fixed inset-0 h-screen w-screen bg-slate-50 text-2xl text-black transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:w-auto lg:items-center lg:bg-transparent lg:text-sm lg:font-bold lg:uppercase lg:tracking-wide lg:text-black lg:opacity-100"
+            class="z-40 invisible opacity-0 fixed inset-0 h-screen w-screen bg-orange-600 text-2xl text-black transition-all duration-300 ease-in-out lg:visible lg:relative lg:flex lg:h-auto lg:w-auto lg:items-center lg:bg-transparent lg:text-sm lg:font-bold lg:uppercase lg:tracking-wide lg:text-black lg:opacity-100"
             :class="{ '!visible opacity-100': activeMenu }"
             v-scroll-lock="activeMenu"
         >

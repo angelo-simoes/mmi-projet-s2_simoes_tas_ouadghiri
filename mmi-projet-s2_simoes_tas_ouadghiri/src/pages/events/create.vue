@@ -81,23 +81,7 @@ function selectAddressSuggestion(suggestion) {
   addressSuggestions.value = [];
 }
 
-async function fetchCoordinates(suggestion) {
-  try {
-    const response = await axios.get('https://nominatim.openstreetmap.org/search', {
-      params: {
-        q: suggestion.display_name,
-        format: 'json',
-        limit: 1,
-      },
-    });
 
-    const coordinates = response.data[0];
-    eventData.value.latitude = parseFloat(coordinates.lat);
-    eventData.value.longitude = parseFloat(coordinates.lon);
-  } catch (error) {
-    console.error('Erreur lors de la récupération des coordonnées', error);
-  }
-}
 
   async function submitForm() {
   try {
