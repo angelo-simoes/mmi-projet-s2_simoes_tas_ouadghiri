@@ -4,6 +4,7 @@ import type { EventsResponse } from '@/pocketbase-types';
 import { deleteEvent } from '@/backend';
 const props: EventsResponse = defineProps<EventsResponse>()
 import  IconDelete  from '@/components/icons/IconDelete.vue';
+import { estConnecté } from '@/auth';
 
 
 const url = `/events/${props.id}`
@@ -78,8 +79,7 @@ const url = `/events/${props.id}`
       <p class="uppercase">{{ formatDate(props.date_start) }}</p>
       <p>{{ props.place }}</p>
       <div class="flex justify-between">
-        <RouterLink :to="`${url}`" class="inline-block border-b-2 border-black uppercase font-medium" >VOIR</RouterLink>
-        <button @click="deleteEvent(props.id)"><IconDelete ></IconDelete></button>
+        <RouterLink v-if="estConnecté" :to="`${url}`" class="inline-block border-b-2 border-black uppercase font-medium" >VOIR</RouterLink>
       </div>
 
     </div>

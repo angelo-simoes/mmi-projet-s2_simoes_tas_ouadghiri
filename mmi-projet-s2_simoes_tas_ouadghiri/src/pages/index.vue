@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script setup lang="ts"> 
+import "leaflet"
 import { LMap, LTileLayer, LMarker, LPopup,} from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { getAllEvents, getAllEventsBySport } from "@/backend";
-import { formatDate } from "@/helper";
-import  IconAdd  from '@/components/icons/IconAdd.vue';
 import CardEvent from '@/components/CardEventHome.vue'
-import { RouterLink } from 'vue-router'
 import type { EventsResponse } from '@/pocketbase-types';
 
 const zoom = ref(14);
@@ -30,9 +28,6 @@ const events = ref<EventsResponse[]>([]);
       allEvents.value = await getAllEvents();
       console.log(events.value);
 });
-
-
-
 
 const selectedSport = ref('all'); // Valeur par défaut du picker
       const fetchEventsBySport = async () => {
@@ -97,6 +92,7 @@ const selectedSport = ref('all'); // Valeur par défaut du picker
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           layer-type="base"
           name="OpenStreetMap"
+          :use-global-leaflet="false"
         ></l-tile-layer>
         <l-marker v-for="event in events" :key="event.id" :lat-lng="[event.latitude, event.longitude]" @click="openEventModal(event)">
           <l-popup class="font-bold flex text-orange-600">{{ event.title }}</l-popup>
@@ -149,4 +145,5 @@ const selectedSport = ref('all'); // Valeur par défaut du picker
     width: 100%;
     height: 100%;
   }
+  
 </style>
