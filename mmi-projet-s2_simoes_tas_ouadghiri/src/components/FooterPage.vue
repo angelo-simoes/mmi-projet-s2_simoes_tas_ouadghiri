@@ -14,7 +14,7 @@
         </div>
       <nav class="space-y-4 col-span-3 col-start-7">
         <h3 class="font-bold uppercase">Menu</h3>
-        <ul class="lg:space-y-4 uppercase font-medium">
+        <ul v-if="estConnecté" class="lg:space-y-4 uppercase font-medium">
             <li><RouterLink to="/events">mes évènements</RouterLink></li>
             <li><RouterLink :to="`${url}`">profil</RouterLink></li>
         </ul>

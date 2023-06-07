@@ -30,7 +30,7 @@
             :class="{ '!visible opacity-100': activeMenu }"
             v-scroll-lock="activeMenu"
         >
-        <ul class="mt-[25vh] ml-16 lg:m-0 lg:flex"> 
+        <ul v-if="estConnecté" class="mt-[25vh] ml-16 lg:m-0 lg:flex"> 
                 <li class="menu-item uppercase text-white"><RouterLink to="/events" @click="closeMenu" class="menu-link">mes évènements</RouterLink></li>
                 <li class="menu-item uppercase text-white"><RouterLink to="/#" @click="closeMenu" class="menu-link">messagerie</RouterLink></li>
 		    </ul>
